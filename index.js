@@ -3,45 +3,68 @@ const fs = require('fs')
 
 
 // array of questions for user
-const questions = [
+inquirer.prompt([
   {
-    type: 'input',
     name: 'title',
+    type: 'input',
     message: 'Please provide the title of your ReadMe.',
   },
   {
-    type: 'input',
     name: 'description',
+    type: 'input',
     message: 'Please provide the description of your ReadMe.',
   },
   {
-    type: 'list',
     name: 'license',
+    type: 'list',
     message: "Please select your project's license type."
     choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None']
   },
-  
   {
+    name: 'installation',
     type: 'input',
+    message: 'Please provide command instructions to install.'
+  },
+  {
+    name: 'usage',
+    type: 'input',
+    message: 'Please provide usage instructions.'
+  },
+  {
+    name: 'contributing',
+    type: 'input',
+    message: 'Please provide instructions to contribute.'
+  },
+  {
+    name: 'tests',
+    type: 'input',
+    message: 'Please provide command instructions to test.'
+  },
+  {
     name: 'github',
+    type: 'input',
     message: 'Please enter your GitHub username.',
   },
   {
-    type: 'input',
     name: 'email',
+    type: 'input',
     message: 'Please enter your email address.',
   }
 
-];
+])
+.then(data =>{
+  console.log(data)
+  const filename = `${data.title}README.md`;
 
-// function to write README file
-function writeToFile(fileName, data) {
-}
+  fs.writeFile(filename, (
 
-// function to initialize program
-function init() {
+  
+  
+  
+    ),(err)=>
+      err ? console.log(err) : console.log('Success!')
+  ); 
+})
 
-}
 
-// function call to initialize program
-init();
+
