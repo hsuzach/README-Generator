@@ -28,7 +28,7 @@ inquirer.prompt([
   {
     name: 'usage',
     type: 'input',
-    message: 'Please provide instrcutions to use.'
+    message: 'Please provide instructions to use.'
   },
   {
     name: 'contributing',
@@ -104,7 +104,7 @@ ${data.contributing}
 If you have any questions, please reach out to me on GitHub at github.com/${data.github} or reach me by my email (${data.email}).
 
 `
-  fs.writeFile(`${data.title.toLowerCase().split(' ').join(' ')}README.md`, generatedREADME, (err)=>
+  fs.writeFile(`${data.title.toLowerCase().split(' ').join('')}.md`, generatedREADME, (err)=>
     err ? console.log(err) : console.log('Successfully Generated README'))
 })
 
