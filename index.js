@@ -1,19 +1,18 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./generateMarkdown.js');
 
 
-// array of questions for user
+//questions for user
 inquirer.prompt([
   {
     name: 'title',
     type: 'input',
-    message: 'Please provide the title of your ReadMe.',
+    message: 'Please provide the project title of your ReadMe.',
   },
   {
     name: 'description',
     type: 'input',
-    message: 'Please provide the description of your ReadMe.',
+    message: 'Please provide the project description.',
   },
   {
     name: 'license',
@@ -24,12 +23,12 @@ inquirer.prompt([
   {
     name: 'installation',
     type: 'input',
-    message: 'Please provide command instructions to install.'
+    message: 'Please provide instructions to install.'
   },
   {
     name: 'usage',
     type: 'input',
-    message: 'Please provide usage instructions.'
+    message: 'Please provide instrcutions to use.'
   },
   {
     name: 'contributing',
@@ -39,7 +38,7 @@ inquirer.prompt([
   {
     name: 'tests',
     type: 'input',
-    message: 'Please provide command instructions to test.'
+    message: 'Please provide instructions to test.'
   },
   {
     name: 'github',
@@ -57,6 +56,7 @@ inquirer.prompt([
   console.log(data)
   const filename = `${data.title}README.md`;
 
+//template for README
   const generatedREADME = 
 `
 # ${data.title}
