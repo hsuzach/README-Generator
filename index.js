@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
-const fs = require('fs')
+const fs = require('fs');
+const generateMarkdown = require('./generateMarkdown.js');
 
 
 // array of questions for user
@@ -17,7 +18,7 @@ inquirer.prompt([
   {
     name: 'license',
     type: 'list',
-    message: "Please select your project's license type."
+    message: "Please select your project's license type.",
     choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None']
   },
   {
@@ -56,14 +57,62 @@ inquirer.prompt([
   console.log(data)
   const filename = `${data.title}README.md`;
 
-  fs.writeFile(filename, (
+  const generatedREADME = 
+`
+# ${data.title}
+
+
+<img src='https://img.shields.io/badge/License-${data.license}-blue.svg'>
+
+##Description
+
+${data.description}
+
+##Table of Contents
+
+<details open="open">
+<summary>README Contents</summary>
+<ul>
+  <li><a href="#Usage">Usage</a></li>
+  <li><a href="#Installation">Installation</a></li>
+  <li><a href="#Tests">Tests</a></li>
+  <li><a href="#Contributing">Contributing</a></li>
+  <li><a href="#ContactInfo">Contact</a></li>
+
+</ul>
+</details>
+
+<h3 id="Usage">Usage</h3>
+${data.usage}
+
+<h3 id="Installation">Installation</h3>
+
+
+
+${data.installation}
+
+<h3 id="Tests">Tests</h3>
+
+
+${data.tests}
+
+<h3 id="Contributing">Contributing</h3>
+${data.contributing}
+
+<h3 id="ContactInfo">Contact</h3>
+
+If you have any questions, please reach out to me on GitHub at github.com/${data.github} or reach me by my email (${data.email}).
+
+`
+  fs.writeFile(`${data.title}README.md`, generatedREADME, (err)=>
+    err ? console.log(err) : console.log('Successfully Generated README'))
 
   
-  
-  
-    ),(err)=>
-      err ? console.log(err) : console.log('Success!')
-  ); 
+
+  // fs.writeFile('test.md',
+  //   generateMarkdown({...data})),
+  //   // (err)=>
+  //   //   err ? console.log(err) : console.log('Successfully Generated README') 
 })
 
 
