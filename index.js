@@ -106,13 +106,6 @@ If you have any questions, please reach out to me on GitHub at github.com/${data
 `
   fs.writeFile(`${data.title}README.md`, generatedREADME, (err)=>
     err ? console.log(err) : console.log('Successfully Generated README'))
-
-  
-
-  // fs.writeFile('test.md',
-  //   generateMarkdown({...data})),
-  //   // (err)=>
-  //   //   err ? console.log(err) : console.log('Successfully Generated README') 
 })
 
 
